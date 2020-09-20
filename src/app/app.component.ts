@@ -22,5 +22,9 @@ export class AppComponent implements OnInit {
       CHALLENGE
        - pass the city id to service.getCityDetails(woeid)
     */
+    this.weatherService.getCityDetails(woeid).subscribe(resp => {
+      console.log('City Details:', resp);
+      this.cityDetails = resp
+    });
   }
 }

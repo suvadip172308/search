@@ -11,7 +11,7 @@ export class SearchComponent implements OnInit {
 
     @ViewChild('searchInput') searchInput;
     searchResults: ISearchResult[];
-    @Output() selectedCity;
+    @Output() selectedCity = new EventEmitter<number>();
 
     constructor(
         private weatherService: WeatherService,
@@ -27,6 +27,16 @@ export class SearchComponent implements OnInit {
                   and assign the results to searchResults array
                 - if input field is empty, clear the searResults array
         */
+       const searchTerm = term.trim();
+
+       if(!searchTerm) {
+        this.searchResults = [];
+        return;
+       }
+
+       this.weatherService.searchLocation(searchTerm).subscribe(resp => {
+         this.searchResults = resp;
+       });
     }
 
     selectedLocation(cityDetails: ISearchResult) {
@@ -38,5 +48,9 @@ export class SearchComponent implements OnInit {
               - clear all the results
               - send the cityid (woeid) to the parent component (AppComponent)
         */
+       this.searchInput.value = '';
+       this.searchResults = [];
+
+       this.selectedCity.emit(cityDetails.woeid);
     }
 }

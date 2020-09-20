@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<testsuite name="Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/11.12.0" package="unit" timestamp="2020-09-20T05:11:06" id="0" hostname="workspacekw6n5bnx9f34h4fk.ws-69fd7c667c-j9k48" tests="14" errors="0" failures="3" time="3.336">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/11.12.0"/>
+  </properties>
+  <testcase name="AppComponent should render title in a text-mid class" time="0.765" classname="unit.AppComponent"/>
+  <testcase name="AppComponent should call weatherService.getCityDetails when getCityDetails() is called" time="0.495" classname="unit.AppComponent"/>
+  <testcase name="CityComponent should display city and country" time="0.229" classname="unit.CityComponent"/>
+  <testcase name="CityComponent should display formatted date" time="0.189" classname="unit.CityComponent"/>
+  <testcase name="CityComponent should display temperature with only 1 decimal" time="0.16" classname="unit.CityComponent"/>
+  <testcase name="CityComponent should display temperature with minimum 2 digits left to decimal" time="0.189" classname="unit.CityComponent">
+    <failure type="">Expected ' 2°C ' to contain '02.0'.
+    at UserContext.eval (webpack:///./src/app/components/city/city.component.spec.ts?:56:36)
+    at ZoneDelegate.invoke (webpack:///./node_modules/zone.js/dist/zone.js?:387:26)
+    at ProxyZoneSpec.onInvoke (webpack:///./node_modules/zone.js/dist/zone-testing.js?:287:39)
+    at ZoneDelegate.invoke (webpack:///./node_modules/zone.js/dist/zone.js?:386:32)
+</failure>
+  </testcase>
+  <testcase name="CityComponent should display weather name" time="0.171" classname="unit.CityComponent"/>
+  <testcase name="SearchComponent search() should call weatherService.searchLocation when some character is typed" time="0.205" classname="unit.SearchComponent"/>
+  <testcase name="SearchComponent search() should not call weatherService.searchLocation when searchedString is empty" time="0.203" classname="unit.SearchComponent">
+    <failure type="">Expected [  ] to equal null.
+    at UserContext.eval (webpack:///./src/app/components/search/search.component.spec.ts?:60:45)
+    at ZoneDelegate.invoke (webpack:///./node_modules/zone.js/dist/zone.js?:387:26)
+    at ProxyZoneSpec.onInvoke (webpack:///./node_modules/zone.js/dist/zone-testing.js?:287:39)
+    at ZoneDelegate.invoke (webpack:///./node_modules/zone.js/dist/zone.js?:386:32)
+</failure>
+  </testcase>
+  <testcase name="SearchComponent selectedLocation() should emit cityid" time="0.21" classname="unit.SearchComponent"/>
+  <testcase name="SearchComponent selectedLocation() should clear searchResults" time="0.293" classname="unit.SearchComponent">
+    <failure type="">Expected [  ] to be null.
+    at UserContext.eval (webpack:///./src/app/components/search/search.component.spec.ts?:108:45)
+    at ZoneDelegate.invoke (webpack:///./node_modules/zone.js/dist/zone.js?:387:26)
+    at ProxyZoneSpec.onInvoke (webpack:///./node_modules/zone.js/dist/zone-testing.js?:287:39)
+    at ZoneDelegate.invoke (webpack:///./node_modules/zone.js/dist/zone.js?:386:32)
+</failure>
+  </testcase>
+  <testcase name="SearchComponent selectedLocation() should be called when cityName is clicked" time="0.198" classname="unit.SearchComponent"/>
+  <testcase name="WeatherService should fetch cities based on searched query" time="0.016" classname="unit.WeatherService"/>
+  <testcase name="WeatherService should fetch the city details based on the cityId" time="0.013" classname="unit.WeatherService"/>
+  <system-out>
+    <![CDATA[Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/11.12.0 LOG: 'Hello:', undefined
+,Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/11.12.0 LOG: 'Hello:', undefined
+,Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/11.12.0 LOG: 'Hello:', Object{city: 'chennai', country: 'india', weather: [Object{date: ..., temperature: ..., weather_name: ..., weather_image: ...}]}
+,Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/11.12.0 LOG: 'Hello:', Object{city: 'chennai', country: 'india', weather: [Object{date: ..., temperature: ..., weather_name: ..., weather_image: ...}]}
+,Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/11.12.0 LOG: 'Hello:', Object{city: 'chennai', country: 'india', weather: [Object{date: ..., temperature: ..., weather_name: ..., weather_image: ...}]}
+,Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/11.12.0 LOG: 'Hello:', Object{city: 'chennai', country: 'india', weather: [Object{date: ..., temperature: ..., weather_name: ..., weather_image: ...}]}
+,Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/11.12.0 LOG: 'Hello:', Object{city: 'chennai', country: 'india', weather: [Object{date: ..., temperature: ..., weather_name: ..., weather_image: ...}]}
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

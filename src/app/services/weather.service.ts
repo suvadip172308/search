@@ -19,14 +19,20 @@ export class WeatherService {
   baseUrl = 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com';
 
 
+  getUrl() {
+    return this.baseUrl + '/api/location/';
+  }
+
+
   searchLocation(term): Observable<ISearchResult[]> {
     /*
       CHALLANGE
        - get list of cities based on the searched string
        sample url: baseUrl/api/location/search/?query=paris
     */
-   return;
+   const url = this.getUrl() + 'search/?query=' + term;
 
+   return this.http.get<ISearchResult[]>(url);
   }
 
   getCityDetails(woeid): Observable<IWeatherData> {
@@ -41,26 +47,34 @@ export class WeatherService {
        - fetch the city weather data
        - transform the received data to required "IWeatherData" format using transformRawData() func
     */
-   return;
+   const url = this.getUrl() + woeid;
 
+   return this.http.get<IWeatherRawData>(url).pipe(
+     map(resp => this.transformRawData(resp))
+   );
   }
 
   transformRawData(rawData: IWeatherRawData) {
     const transformedWeather: Array<ICityWeather> = [];
 
     rawData.consolidated_weather.forEach(function(obj) {
-      const date = '';
-      const temperature = 0;
-      const weather_name = '';
+      const date = obj.applicable_date;
+      const temperature = obj.the_temp;
+      const weather_name = obj.weather_state_name;
       const weather_image = `https://www.metaweather.com/static/img/weather/.svg`;
 
-      transformedWeather.push({ } as ICityWeather);
+      transformedWeather.push({
+        date,
+        temperature,
+        weather_name,
+        weather_image
+      } as ICityWeather);
     });
 
     return {
       city: rawData.title,
-      country: '',
-      weather: [],
+      country: rawData.parent.title,
+      weather: transformedWeather,
     };
   }
 }
